@@ -1,0 +1,66 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#define N 13
+typedef struct node
+{
+	int data;
+	struct node *next;
+}ElemSN;
+ElemSN*CreateNode(int a[])
+{
+	ElemSN *h,*tail,*p;
+	int i;
+	h=tail=(ElemSN*)malloc(sizeof(ElemSN));
+	h->next=NULL;
+	h->data=a[0];
+	for(i=1;i<N;i++)
+	{
+		p=(ElemSN*)malloc(sizeof(ElemSN));
+		p->data=a[i];
+		p->next=NULL;
+		tail->next=p;
+		tail=p;
+	}	
+		return h;
+}
+ElemSN*PrintNode(ElemSN*h)
+{
+	while(h->next)
+	{
+	printf("%d\n",h->next->data);
+	h=h->next;
+	}
+}
+int main()
+{
+	int a[13]={1,2,3,4,5,6,7,8,9,10,11,12,13};
+	ElemSN *head,*tail;
+	head=tail=CreateNode(a);
+	int k,i;
+	k=3;
+	while(tail->next)
+	tail=tail->next;
+	tail->next=head;
+	printf("sequence that persons leave the circle:\n");
+	
+	while(head-tail)
+	{	
+		
+			for(i=0;i<k-1;i++)
+		{
+			tail=head;
+			head=head->next;
+		}
+		tail->next=head->next;
+      	if(i==9)	
+        printf(" %d",head->data);
+      	else
+		printf("   %d",head->data);
+		free (head);
+		head=tail->next;
+		
+	}
+	
+	printf("\nThe last one is 13\n");
+}
