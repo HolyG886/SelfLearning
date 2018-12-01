@@ -1,0 +1,65 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+typedef struct node{
+	int y;
+	int m;
+	int d;
+}DAY;
+int Date(DAY day)
+{
+	int	date=day.d;
+	if(day.y%4==0)
+	{
+		switch (day.m)
+		{
+			case 12 : date+=30;
+			case 11 : date+=31;
+			case 10 : date+=30;
+			case 9 : date+=31;
+			case 8 : date+=31;
+			case 7 : date+=30;
+			case 6 : date+=31;
+			case 5 : date+=30;
+			case 4 : date+=31;
+			case 3 : date+=28;
+			case 2 : date+=31;   
+		}
+	}
+	else
+	{
+		switch (day.m)
+		{
+			case 12 : date+=30;
+			case 11 : date+=31;
+			case 10 : date+=30;
+			case 9 : date+=31;
+			case 8 : date+=31;
+			case 7 : date+=30;
+			case 6 : date+=31;
+			case 5 : date+=30;
+			case 4 : date+=31;
+			case 3 : date+=29;
+			case 2 : date+=31;
+			case 1 :;  
+		}
+	}
+		
+	return date;
+ } 
+ int main()
+ {
+ 	DAY day;
+ 	DAY *p;
+ 	p= &day;
+ 	scanf("%d%d%d",&p->y,&p->m,&p->d);
+ 	int date=Date(day);
+ 	if(date==1)
+ 	printf("%d/%d is the 1st day in %d",day.m,day.d,day.y);
+ 	else
+ 		if(date==2)
+ 		printf("%d/%d is the 2nd day in %d",day.m,day.d,day.y);
+ 		else
+ 			printf("%d/%d is the %dth day in %d",day.m,day.d,date,day.y);
+
+ }
