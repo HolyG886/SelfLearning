@@ -1,0 +1,71 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#define N 5
+typedef struct node{
+	int Sno;
+	char Sname[10];
+	float c1;
+	float c2;
+	float c3;
+}STU;
+int Average(STU stu[])
+{
+	int i,SUM;
+	for(i=0;i<N;i++)
+	{
+		SUM+=stu[i].c1;
+		SUM+=stu[i].c2;
+		SUM+=stu[i].c3;
+	
+	}
+	return (float)SUM/15;
+	
+}
+void input(STU stu[])
+{
+	for(int i=0;i<N;i++)
+	{
+		scanf("%d",&stu[i].Sno);
+		scanf("%s",&stu[i].Sname);
+		scanf("%f",&stu[i].c1);
+		scanf("%f",&stu[i].c2);
+		scanf("%f",&stu[i].c3);
+		
+	}
+}
+STU* max(STU stu[])
+{
+	STU *p;
+	p=&stu[0];
+	int max=(p->c1+p->c2+p->c3)/3;
+	for(int i=0;i<N;i++)
+	{
+		if((stu[i].c1+stu[i].c2+stu[i].c3)/3>max)
+		{
+			max=(stu[i].c1+stu[i].c2+stu[i].c3)/3;
+			p=&stu[i];
+		}
+	}	
+	return p;
+}
+int main(void)
+{
+	STU stu[5];
+	input(stu);
+	int Ave;
+	printf("%d",Ave=Average(stu));
+	STU *p;
+	p=&stu[0];
+	p=max(stu);
+	printf("The highest score is: student %d,",p->Sno);
+	printf("%s\n",p->Sname);
+	printf("his scores are:%.2f,%.2f,%.2f,",(float)p->c1,(float)p->c2,(float)p->c3);
+	printf("average:%d.",((float)p->c1+(float)p->c2+(float)p->c3)/3) ;
+	
+	
+	
+	
+	
+	
+}
